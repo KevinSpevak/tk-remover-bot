@@ -8,6 +8,7 @@ don't have a credit card.  Boo.
 
 written by Kevin Spevak, based on bot.py from https://gist.github.com/avidw/9438841
 """
+from __future__ import print_function
 
 import praw, time, os     # for all bots
 #import bmemcached 
@@ -40,9 +41,11 @@ for post in praw.helpers.submission_stream(reddit, sub):
           post.report()
           
       except HTTPError as err:
-          pass
+          print("Got httpError while trying to handle the link " + post.url \
+                    + "\n" + str(err), file=syst.stderr)
       # This one is pretty rare, since PRAW controls the rate automatically, but just in case
       except praw.errors.RateLimitExceeded as err:
+          print("Rate Limit Exceeded \n" + str(err), file=sys.stderr)
           time.sleep(err.sleep_time)     
 
 #for comment in praw.helpers.comment_stream(reddit, '+'.join(subreddits)):
