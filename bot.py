@@ -20,7 +20,6 @@ import re                             # if you want to use regex
  
 reddit = praw.Reddit('tk remover bot 1.0 by /u/spevak')
 reddit.login(os.environ['REDDIT_USERNAME'], os.environ['REDDIT_PASSWORD'])
-#reddit.login('tk_remover_bot', 'alldayeveryday')
 
 #already = bmemcached.Client((os.environ['MEMCACHEDCLOUD_SERVERS'],), 
 #                             os.environ['MEMCACHEDCLOUD_USERNAME'],
